@@ -6,3 +6,19 @@
 img {
   width: 100%;
 }
+
+.car-east {
+  transform: rotate(0);
+}
+
+.car-south {
+  transform: rotate(90deg);
+}
+
+.car-west {
+  transform: rotate(180deg);
+}
+
+.car-north {
+  transform: rotate(270deg);
+}
