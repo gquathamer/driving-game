@@ -2,6 +2,7 @@ var data = {
   direction: 'east',
   positionX: 0,
   positionY: 0,
+  started: false,
 }
 
 var carContainer = document.querySelector('.car-container');
@@ -9,6 +10,24 @@ var carImage = document.querySelector('img');
 
 data.positionX = carContainer.left;
 data.positionY = carContainer.top;
+
+var intervalID;
+
+var num = 5;
+
+function startCar() {
+  intervalID = setInterval(function () {
+    carContainer.style.left = (num.toString() + 'px');
+    data.positionX = carContainer.left;
+    //carContainer.style.top = (num.toString() + 'px');
+    //data.positionY = carContainer.top;
+    num++;
+  }, 16);
+}
+
+function stopCar() {
+  clearInterval(intervalID);
+}
 
 document.addEventListener('keydown', function (event) {
   if (event.keyCode === 37) {
@@ -24,13 +43,12 @@ document.addEventListener('keydown', function (event) {
     carImage.className = 'car-south';
     data.direction = 'south';
   } else if (event.keyCode === 32) {
-    var num = 5;
-    var interval = setInterval(function () {
-      carContainer.style.left = (num.toString() + 'px');
-      data.positionX = carContainer.left;
-      carContainer.style.top = (num.toString() + 'px');
-      data.positionY = carContainer.top;
-      num++;
-    }, 16);
+    if (data.started === false) {
+      data.started = true;
+      startCar();
+    } else {
+      data.started = false;
+      stopCar()
+    }
   }
 })
