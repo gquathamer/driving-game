@@ -19,8 +19,6 @@ function startCar() {
   intervalID = setInterval(function () {
     carContainer.style.left = (num.toString() + 'px');
     data.positionX = carContainer.left;
-    //carContainer.style.top = (num.toString() + 'px');
-    //data.positionY = carContainer.top;
     num++;
   }, 16);
 }
