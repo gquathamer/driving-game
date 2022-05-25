@@ -8,18 +8,27 @@ var data = {
 var carContainer = document.querySelector('.car-container');
 var carImage = document.querySelector('img');
 
-data.positionX = carContainer.left;
-data.positionY = carContainer.top;
-
 var intervalID;
-
-var num = 5;
 
 function startCar() {
   intervalID = setInterval(function () {
-    carContainer.style.left = (num.toString() + 'px');
-    data.positionX = carContainer.left;
-    num++;
+    if (data.direction === 'east') {
+      var xLocation = data.positionX + 5;
+      carContainer.style.left = (xLocation.toString() + 'px');
+      data.positionX += 5;
+    } else if (data.direction === 'west') {
+      var xLocation = data.positionX - 5;
+      carContainer.style.left = (xLocation.toString() + 'px');
+      data.positionX -= 5;
+    } else if (data.direction === 'north') {
+      var yLocation = data.positionY - 5;
+      carContainer.style.top = (yLocation.toString() + 'px');
+      data.positionY -= 5;
+    } else if (data.direction === 'south') {
+      var yLocation = data.positionY + 5;
+      carContainer.style.top = (yLocation.toString() + 'px');
+      data.positionY += 5;
+    }
   }, 16);
 }
 
